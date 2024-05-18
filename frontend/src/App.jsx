@@ -8,10 +8,10 @@ const App = () => {
   return (
     <>
       <Header />
-
+    <br />
       <main className='py-3'>
         <Container>
-         <HomeScreen/>
+          <HomeScreen />
         </Container>
       </main>
 

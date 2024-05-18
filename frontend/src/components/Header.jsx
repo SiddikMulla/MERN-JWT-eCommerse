@@ -2,11 +2,12 @@ import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
 import logo from "../assets/logo.png"
+import "./Header.css"
 
 export const Header = () => {
     return (
-        <header className='pos'>
-            <Navbar bg="info" variant='dark' expand="md"  collapseOnSelect>
+        <header>
+            <Navbar bg="info" variant='dark' expand="md" className='pos' collapseOnSelect>
                 <Container>
                     <Navbar.Brand href='/'>
                         <img src={logo} alt="SidShop" />
