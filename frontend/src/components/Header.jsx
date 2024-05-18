@@ -5,8 +5,8 @@ import logo from "../assets/logo.png"
 
 export const Header = () => {
     return (
-        <header>
-            <Navbar bg="primary" variant='dark' expand="md" collapseOnSelect>
+        <header className='pos'>
+            <Navbar bg="info" variant='dark' expand="md"  collapseOnSelect>
                 <Container>
                     <Navbar.Brand href='/'>
                         <img src={logo} alt="SidShop" />
