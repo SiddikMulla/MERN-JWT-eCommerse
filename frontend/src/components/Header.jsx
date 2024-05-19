@@ -9,8 +9,7 @@ export const Header = () => {
         <header>
             <Navbar bg="info" variant='dark' expand="md" className='pos' collapseOnSelect>
                 <Container>
-                    <Navbar.Brand href='/'>
-                        <img src={logo} alt="SidShop" />
+                    <Navbar.Brand href='/' style={{fontWeight:800,letterSpacing:3}}>
                         SidShop
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />

@@ -15,7 +15,7 @@ const ProductList = ({ product }) => {
                         <strong>{product.name}</strong>
                     </Card.Title>
                 </a>
-                <Card.Text as="h3">
+                <Card.Text as="h5">
                     ${product.price}
                 </Card.Text>
             </Card.Body>
