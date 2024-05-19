@@ -82,7 +82,7 @@ const products = [
     name: "Samsung Android TV 32'inches",
     image: '/images/tv.jpg',
     description:
-      'Android Tv Contains all OTT platfform',
+      'Android Tv Contains all OTT platfform Which Support WI-FI, having Ultra HD screens with 4k Resolution',
     brand: 'Amazon',
     category: 'Electronics',
     price: 199.99,
