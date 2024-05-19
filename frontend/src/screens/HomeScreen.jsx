@@ -8,14 +8,13 @@ const HomeScreen = () => {
     return (
         <>
             <div className='my-5'>
-                <h1>Latest Products</h1>
+                <h3 style={{textAlign:'center'}}>Latest Products</h3>
                 <Row>
                     {products.map((product) => (
                         <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                             <ProductList product={product} />
                         </Col>
                     ))}
-
                 </Row>
             </div>
         </>

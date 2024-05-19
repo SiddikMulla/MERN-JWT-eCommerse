@@ -77,6 +77,19 @@ const products = [
     rating: 4,
     numReviews: 12,
   },
+  {
+    _id: '7',
+    name: "Samsung Android TV 32'inches",
+    image: '/images/tv.jpg',
+    description:
+      'Android Tv Contains all OTT platfform',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 199.99,
+    countInStock: 0,
+    rating: 4,
+    numReviews: 12,
+  },
  
 ]
 
