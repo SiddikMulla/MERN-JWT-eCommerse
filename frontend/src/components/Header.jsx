@@ -1,15 +1,14 @@
 import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
-import "./Header.css"
 import { LinkContainer } from 'react-router-bootstrap'
 export const Header = () => {
     return (
         <header>
             <Navbar bg="info" variant='dark' expand="md" className='pos' collapseOnSelect>
                 <Container>
-                    <LinkContainer to="/">
-                        <Navbar.Brand style={{ fontWeight: 800, letterSpacing: 3 }}>
+                    <LinkContainer to="/" style={{ fontWeight:800, letterSpacing:3 }}>
+                        <Navbar.Brand>
                             SidShop
                         </Navbar.Brand>
                     </LinkContainer>

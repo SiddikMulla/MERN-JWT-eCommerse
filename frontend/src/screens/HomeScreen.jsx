@@ -7,7 +7,7 @@ import ProductList from '../components/ProductList'
 const HomeScreen = () => {
     return (
         <>
-            <div className='my-5'>
+            <div>
                 <h3 style={{textAlign:'center'}}>Latest Products</h3>
                 <Row>
                     {products.map((product) => (
