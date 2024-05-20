@@ -1,6 +1,5 @@
 import React from 'react'
 import { Row, Col } from "react-bootstrap"
-import { MdDevices } from "react-icons/md";
 import products from '../products'
 import ProductList from '../components/ProductList'
 
