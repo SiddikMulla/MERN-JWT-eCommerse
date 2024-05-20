@@ -1,0 +1,16 @@
+{
+  "name": "mern_ecommerse",
+  "version": "1.0.0",
+  "description": "eCommerse Website With MERN stack",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon backend/server.js"
+  },
+  "author": "SiddikMulla",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
