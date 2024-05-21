@@ -1,7 +1,12 @@
 import express from 'express';
 import products from './data/products.js';
+import dotenv from 'dotenv'
+dotenv.config();
+import connectDb from './config/db.js';
+
 const port = process.env.PORT || 5000;
 
+connectDb();//Mongo Connection
 const app = express();
 
 app.get('/api/products', (req, res) => {

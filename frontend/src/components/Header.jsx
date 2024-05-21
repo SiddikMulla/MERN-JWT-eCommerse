@@ -7,9 +7,9 @@ export const Header = () => {
         <header>
             <Navbar bg="info" variant='dark' expand="md" className='pos' collapseOnSelect>
                 <Container>
-                    <LinkContainer to="/" style={{ fontWeight:800, letterSpacing:3 }}>
+                    <LinkContainer to="/" style={{ fontWeight: 500, letterSpacing: 3,fontSize:30}}>
                         <Navbar.Brand>
-                            SidShop
+                            𝕾𝖎𝖉$𝖙𝖔𝖗𝖊
                         </Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
