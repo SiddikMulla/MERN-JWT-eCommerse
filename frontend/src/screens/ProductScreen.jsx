@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import products from '../products'
 import { HiArrowCircleLeft } from "react-icons/hi";
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Swal from 'sweetalert2'
+import axios from 'axios';
 
 const ProductScreen = () => {
+    const [product, setProduct] = useState({})
+
     const swal = () => {
         Swal.fire({
             title: "Added!",
@@ -15,8 +17,15 @@ const ProductScreen = () => {
         });
     }
     const { id: productId } = useParams();
-    const product = products.find((p) => p._id === productId);
-    console.log(product)
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await axios.get(`/api/products/${productId}`)
+            setProduct(data)
+        }
+        fetchProduct();
+    }, [productId])
+
 
     return (
 
