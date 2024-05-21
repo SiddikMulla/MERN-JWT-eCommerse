@@ -20,3 +20,5 @@ const user = [
         isAdmin: false,
     },
 ]
+
+export default user;
