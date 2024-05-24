@@ -15,6 +15,7 @@ import {
   RouterProvider
 } from 'react-router-dom'
 import ProductScreen from './screens/ProductScreen.jsx'
+import { Page404 } from './components/Page404.jsx'
 
 
 const router = createBrowserRouter(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/product/:id' element={<ProductScreen />} />
+      <Route path='/*' element={<Page404/>} />
     </Route>
   )
 )
