@@ -3,87 +3,78 @@ import { Link, useParams } from 'react-router-dom'
 import { HiArrowCircleLeft } from "react-icons/hi";
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
+// import { useGetProductDetailsQuery } from '../../slices/productApiSlice.js';
 import axios from 'axios';
 
 const ProductScreen = () => {
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState({});
 
-    const swal = () => {
-        Swal.fire({
-            title: "Added!",
-            text: "Product Added to Cart!",
-            icon: "success"
-        });
-    }
     const { id: productId } = useParams();
-
     useEffect(() => {
         const fetchProduct = async () => {
-            const { data } = await axios.get(`/api/products/${productId}`)
-            setProduct(data)
-        }
-        fetchProduct();
-    }, [productId])
+            const { data } = await axios.get(`/api/products/${productId}`);
+            setProduct(data);
+        };
 
+        fetchProduct();
+    }, [productId]);
 
     return (
-
         <>
-            <Link className='btn btn-light mb-3' to="/">
-                <HiArrowCircleLeft /> Go Back
+            <Link className='btn btn-light my-3' to='/'>
+                Go Back
             </Link>
 
             <Row>
-                <Col md={5}>
+                <Col md={6}>
                     <Image src={product.image} alt={product.name} fluid />
                 </Col>
-
-                <Col md={4}>
+                <Col md={3}>
                     <ListGroup variant='flush'>
-                        <ListGroupItem>
+                        <ListGroup.Item>
                             <h3>{product.name}</h3>
-                        </ListGroupItem>
-                        <ListGroupItem>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
                             <Rating
                                 value={product.rating}
                                 text={`${product.numReviews} reviews`}
                             />
-                        </ListGroupItem>
-                        <ListGroupItem>
-                            Price:${product.price}
-                        </ListGroupItem>
-                        <ListGroupItem>
-                            Desciption:`{product.description}
-                        </ListGroupItem>
+                        </ListGroup.Item>
+                        <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                        <ListGroup.Item>
+                            Description: {product.description}
+                        </ListGroup.Item>
                     </ListGroup>
                 </Col>
-
                 <Col md={3}>
                     <Card>
                         <ListGroup variant='flush'>
-                            <ListGroupItem>
+                            <ListGroup.Item>
                                 <Row>
                                     <Col>Price:</Col>
-                                    <Col>${product.price}</Col>
+                                    <Col>
+                                        <strong>${product.price}</strong>
+                                    </Col>
                                 </Row>
-                            </ListGroupItem>
-                            <ListGroupItem>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
                                 <Row>
                                     <Col>Status:</Col>
-                                    <Col>{product.countInStock > 0 ? "In the stock" : "Out of Stock"}</Col>
+                                    <Col>
+                                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                                    </Col>
                                 </Row>
-                            </ListGroupItem>
-                            <ListGroupItem>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
                                 <Button
                                     className='btn-block'
-                                    type='submit'
+                                    type='button'
                                     disabled={product.countInStock === 0}
-                                    onClick={swal}
                                 >
-                                    Add to Cart
+                                    Add To Cart
                                 </Button>
-                            </ListGroupItem>
+                            </ListGroup.Item>
                         </ListGroup>
                     </Card>
                 </Col>
@@ -92,4 +83,4 @@ const ProductScreen = () => {
     )
 }
 
-export default ProductScreen
+export default ProductScreen;
