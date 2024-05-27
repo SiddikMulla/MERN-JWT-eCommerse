@@ -1,7 +1,8 @@
 import { Row, Col } from "react-bootstrap"
 import ProductList from '../components/ProductList'
 import { useGetProductsQuery } from "../../slices/productApiSlice.js"
-import {Spinner} from "react-bootstrap"
+import { Spinner } from "react-bootstrap"
+import Message from "../components/Message.jsx"
 
 const HomeScreen = () => {
     const { data: products, isLoading, error } = useGetProductsQuery();
@@ -9,11 +10,11 @@ const HomeScreen = () => {
     return (
         <>
             {isLoading ? (
-                 <Spinner animation="border" role="status">
-                 <span className="visually-hidden">Loading...</span>
-               </Spinner>
+                <Spinner animation="border" className="justify-content-center" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
             ) : error ? (
-                <div>{error?.data?.message || error.error}</div>
+                <Message variant='danger'>{error?.data?.message || error.error}</Message>
             ) :
                 (<div>
                     <h3 style={{ textAlign: 'center' }}>Latest Products</h3>
