@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { HiArrowCircleLeft } from "react-icons/hi";
 import { Form, Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import Message from '../components/Message.jsx';
+import { addToCart } from '../../slices/cartSlice';
 
 const ProductScreen = () => {
     const [product, setProduct] = useState({});
     const { id: productId } = useParams();
-    const [qty, setQty] = useState(1);  // Changed initial state to 1
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [qty, setQty] = useState(1);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -19,6 +23,11 @@ const ProductScreen = () => {
 
         fetchProduct();
     }, [productId]);
+
+    const addToCartHandler = () => {
+        dispatch(addToCart({ ...product, qty }));
+        navigate('/cart');
+    };
 
     return (
         <>
@@ -93,6 +102,7 @@ const ProductScreen = () => {
                                     className='btn-block'
                                     type='button'
                                     disabled={product.countInStock === 0}
+                                    onClick={addToCartHandler}
                                 >
                                     Add To Cart
                                 </Button>
