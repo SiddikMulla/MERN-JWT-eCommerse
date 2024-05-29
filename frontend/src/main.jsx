@@ -7,7 +7,6 @@ import { Provider } from 'react-redux'
 import App from './App.jsx'
 import HomeScreen from './screens/HomeScreen.jsx'
 import store from './store.js'
-
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -16,14 +15,15 @@ import {
 } from 'react-router-dom'
 import ProductScreen from './screens/ProductScreen.jsx'
 import { Page404 } from './components/Page404.jsx'
-
+import CartScreen from './screens/CartScreen.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/product/:id' element={<ProductScreen />} />
-      <Route path='/*' element={<Page404/>} />
+      <Route path='/cart' element={<CartScreen />} />
+      <Route path='/*' element={<Page404 />} />
     </Route>
   )
 )
