@@ -3,6 +3,7 @@ import { Row, Col, Image, ListGroup, Form, Button, ListGroupItem } from 'react-b
 import { FaTrash } from 'react-icons/fa'
 import Message from '../components/Message'
 import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../slices/cartSlice'
 
 const CartScreen = () => {
     const navigate = useNavigate();
@@ -11,6 +12,9 @@ const CartScreen = () => {
     const cart = useSelector((state) => state.cart);
 
     const { cartItems } = cart;
+    const addToCartHandler = async (product, qty) => {
+        dispatch(addToCart({ ...product, qty }))
+    }
 
     return (
         <>
@@ -39,7 +43,7 @@ const CartScreen = () => {
                                             <Form.Control
                                                 as='select'
                                                 value={item.qty}
-                                                onChange={(e) => { }}
+                                                onChange={(e) => addToCartHandler(item, Number(e.target.value))}
                                             >
                                                 {[...Array(item.countInStock).keys()].map((x) => (
                                                     <option key={x + 1} value={x + 1}>
@@ -66,6 +70,11 @@ const CartScreen = () => {
                                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
                             </h3>
                             ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Button type='button' className='btn-block' disabled={cartItems.length === 0}>
+                                Proceed to Checkout
+                            </Button>
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
