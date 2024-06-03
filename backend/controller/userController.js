@@ -30,6 +30,15 @@ const logoutUser = asyncHandler(async (req, res) => {
     res.send('Logout User')
 })
 
+/*
+    @Desc   get User Profile
+    @route  GET api/users/profile
+    @access public
+*/
+const getUserProfile = asyncHandler(async (req, res) => {
+    res.send('get user Profile')
+})
+
 
 /*
     @Desc   Update User Profile
@@ -78,3 +87,15 @@ const deleteUsers = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
     res.send('Update User')
 })
+
+export {
+    authUser,
+    registerUser,
+    logoutUser,
+    getUserProfile,
+    updateUserProfile,
+    getUsers,
+    getUsersById,
+    deleteUsers,
+    updateUser
+}
