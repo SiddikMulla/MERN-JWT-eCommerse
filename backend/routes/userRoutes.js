@@ -24,3 +24,4 @@ router.route("/").get(getUserProfile).put(updateUserProfile);
 router.route("/:id").get(getUsersById).delete(deleteUsers).put(updateUser);
 
 
+export default router;
