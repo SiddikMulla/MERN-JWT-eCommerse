@@ -7,6 +7,7 @@ import Order from "../models/orderModel.js";
     @access Public
 */
 const authUser = asyncHandler(async (req, res) => {
+    console.log(req.body)
     res.send('Auth User')
 })
 
