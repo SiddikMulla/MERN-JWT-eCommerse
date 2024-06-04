@@ -1,5 +1,5 @@
 import asyncHandler from "../middleware/asyncHandler.js";
-import Order from "../models/orderModel.js";
+import User from "../models/userModel.js";
 
 /*
     @Desc   Auth user & get TOken
@@ -7,7 +7,21 @@ import Order from "../models/orderModel.js";
     @access Public
 */
 const authUser = asyncHandler(async (req, res) => {
-    console.log(req.body)
+    const { email, password } = req.body
+
+    const user = await User.findOne({ email })
+
+    if (user) {
+        res.send({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin
+        })
+    }
+    else {
+        res.status(401);
+    }
     res.send('Auth User')
 })
 
