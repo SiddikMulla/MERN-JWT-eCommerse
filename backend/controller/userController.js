@@ -3,7 +3,7 @@ import User from "../models/userModel.js";
 import jwt from 'jsonwebtoken'
 /*
     @Desc   Auth user & get TOken
-    @route  POST api/users/login
+    @route  POST api/users/auth
     @access Public
 */
 const authUser = asyncHandler(async (req, res) => {
