@@ -24,3 +24,15 @@ const protectRoutes = asyncHandler(async (req, res, next) => {
         throw new Error('Not authorised,Token not found')
     }
 });
+
+//Admin Middleware
+const admin = (req, res, next) => {
+    if (req.user && req.user.isAdmin) {
+        next();
+    } else {
+        res.status(401);
+        throw new Error('Not authorised as Admin');
+    }
+}
+
+export {protectRoutes,admin};
