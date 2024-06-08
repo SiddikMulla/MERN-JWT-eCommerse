@@ -1,6 +1,6 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import User from "../models/userModel.js";
-import jwt from 'jsonwebtoken'
+import generateToken from "../utils/generateToken.js";
 /*
     @Desc   Auth user & get TOken
     @route  POST api/users/auth
@@ -12,17 +12,7 @@ const authUser = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email })
 
     if (user && (await user.matchPassword(password))) {
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-            expiresIn: '30d'
-        })
-
-        //Set JWT as HTTP only cookie
-        res.cookie('jwt', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV !== 'development',
-            sameSite: 'strict',
-            maxAge: 30 * 24 * 60 * 60 * 1000 //30Days
-        })
+        generateToken(res, user._id);
         res.send({
             _id: user._id,
             name: user.name,
@@ -43,7 +33,33 @@ const authUser = asyncHandler(async (req, res) => {
     @access Public
 */
 const registerUser = asyncHandler(async (req, res) => {
-    res.send('Registering User')
+    const { name, email, password } = req.body
+
+    const userExist = await User.findOne({ email })
+
+    if (userExist) {
+        res.status(400)
+        throw new Error('User Already Exist')
+    }
+
+    const user = await User.create({
+        name,
+        email,
+        password
+    })
+
+    if (user) {
+        generateToken(res, user._id);
+        res.status(201).json({
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+        });
+    } else {
+        res.status(404);
+        throw new Error('Invalid User Data')
+    }
 })
 
 
@@ -92,8 +108,7 @@ const getUsers = asyncHandler(async (req, res) => {
 
 /*
     @Desc   Get User
-    @route  GET api/users/:id
-    @access private/admin
+    @route  GET api/users/ess private/admin
 */
 const getUsersById = asyncHandler(async (req, res) => {
     res.send('Get User by id')
@@ -102,8 +117,7 @@ const getUsersById = asyncHandler(async (req, res) => {
 
 /*
     @Desc   Delete Users
-    @route  DELETE api/users/:id
-    @access private/admin
+    @route  DELETE api/users/ess private/admin
 */
 const deleteUsers = asyncHandler(async (req, res) => {
     res.send('Deleting Users')
@@ -111,8 +125,7 @@ const deleteUsers = asyncHandler(async (req, res) => {
 
 /*
     @Desc   Update User
-    @route  PUT api/users/:id
-    @access private/admin
+    @route  PUT api/users/ess private/admin
 */
 const updateUser = asyncHandler(async (req, res) => {
     res.send('Update User')
