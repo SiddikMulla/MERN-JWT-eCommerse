@@ -1,6 +1,8 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
+
+/*------------------------------------------------------------------------------------------------------ */
 /*
     @Desc   Auth user & get TOken
     @route  POST api/users/auth
@@ -27,6 +29,7 @@ const authUser = asyncHandler(async (req, res) => {
     // res.send('Auth User')
 })
 
+/*--------------------------------------------------------------------------------------------------- */
 /*
     @Desc   Register User
     @route  POST api/users
@@ -51,7 +54,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if (user) {
         generateToken(res, user._id);
         res.status(201).json({
-            id: user._id,
+            _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
@@ -62,7 +65,7 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 })
 
-
+/*------------------------------------------------------------------------------------------ */
 /*
     @Desc   Logout user/clear
     @route  POST api/users/logout
@@ -76,16 +79,29 @@ const logoutUser = asyncHandler(async (req, res) => {
     res.status(200).json({ message: 'logged out Successfully!' })
 })
 
+
+/*--------------------------------------------------------------------------------------------- */
 /*
     @Desc   get User Profile
     @route  GET api/users/profile
     @access public
 */
 const getUserProfile = asyncHandler(async (req, res) => {
-    res.send('get user Profile')
+    const user = await User.findById(req.user._id)
+    if (user) {
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+        })
+    } else {
+        res.status(404);
+        throw new Error('User Not Found');
+    }
 })
 
-
+/*----------------------------------------------------------------------------------------------- */
 /*
     @Desc   Update User Profile
     @route  PUT api/users/profile
@@ -95,7 +111,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     res.send('Update user Profile')
 })
 
-
+/*---------------------------------------------------------------------------------------------- */
 /*
     @Desc   Get Users
     @route  GET api/users
@@ -105,7 +121,7 @@ const getUsers = asyncHandler(async (req, res) => {
     res.send('Get Users')
 })
 
-
+/*---------------------------------------------------------------------------------------------- */
 /*
     @Desc   Get User
     @route  GET api/users/ess private/admin
@@ -115,6 +131,8 @@ const getUsersById = asyncHandler(async (req, res) => {
 })
 
 
+
+/*------------------------------------------------------------------------------------------------ */
 /*
     @Desc   Delete Users
     @route  DELETE api/users/ess private/admin
@@ -123,6 +141,9 @@ const deleteUsers = asyncHandler(async (req, res) => {
     res.send('Deleting Users')
 })
 
+
+
+/*-------------------------------------------------------------------------------------------------- */
 /*
     @Desc   Update User
     @route  PUT api/users/ess private/admin
