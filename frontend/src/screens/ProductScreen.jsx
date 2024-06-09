@@ -26,7 +26,7 @@ const ProductScreen = () => {
 
     const addToCartHandler = () => {
         dispatch(addToCart({ ...product, qty }));
-        // navigate('/cart');
+        navigate('/cart');
     };
 
     return (
@@ -103,6 +103,7 @@ const ProductScreen = () => {
                                     type='button'
                                     disabled={product.countInStock === 0}
                                     onClick={addToCartHandler}
+                                    variant='dark'
                                 >
                                     Add To Cart
                                 </Button>
