@@ -10,7 +10,7 @@ export const Page404 = () => {
 
         <img src={img} alt="" className='img-fluid' />
         <br />
-        <Link to='/' style={{ color: 'Green', textDecoration: 'none' }}><Button variant="outline-primary ">Back to Home</Button></Link>
+        <Link to='/' style={{ color: 'Green', textDecoration: 'none' }}><Button variant="outline-dark ">Back to Home</Button></Link>
       </div>
     </>
   )
