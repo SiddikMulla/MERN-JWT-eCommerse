@@ -20,6 +20,10 @@ const CartScreen = () => {
     const removeFromCartHandler = async (id) => {
         dispatch(removeFromCart(id))
     }
+    const checkoutHandler = () => {
+        navigate('/login?redirect=/shipping');
+    };
+
 
     return (
         <>
@@ -43,7 +47,7 @@ const CartScreen = () => {
                                             <Image src={item.image} alt={item.name} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`product/${item._id}`} className='text text-dark'>{item.name}</Link>
+                                            <Link to={`product/${item._id}`} className='text text-dark' style={{ textDecoration: 'none' }}>{item.name}</Link>
                                         </Col>
                                         <Col md={2}>
                                             ${item.price}
@@ -62,7 +66,7 @@ const CartScreen = () => {
                                             </Form.Control>
                                         </Col>
                                         <Col md={3}>
-                                            <Button type='button' variant='light' onClick={() =>
+                                            <Button type='button' variant='light' className="mt-1" onClick={() =>
                                                 removeFromCartHandler(item._id)}>
                                                 <FaTrash />
                                             </Button>
@@ -82,8 +86,14 @@ const CartScreen = () => {
                             ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Button type='button' className='btn-block' variant='dark' disabled={cartItems.length === 0}>
-                                Proceed to Checkout
+                            <Button
+                                type='button'
+                                className='btn-block'
+                                disabled={cartItems.length === 0}
+                                onClick={checkoutHandler}
+                                variant='dark'
+                            >
+                                Proceed To Checkout
                             </Button>
                         </ListGroup.Item>
                     </ListGroup>
