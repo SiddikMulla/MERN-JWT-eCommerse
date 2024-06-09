@@ -8,7 +8,7 @@ export const Header = () => {
     const { cartItems } = useSelector((state) => state.cart)
     return (
         <header>
-            <Navbar bg="dark" variant='dark' expand="md" className='pos' collapseOnSelect>
+            <Navbar bg="info" variant='dark' expand="md" className='pos' collapseOnSelect>
                 <Container>
                     <LinkContainer to="/" style={{ fontWeight: 500, letterSpacing: 3, fontSize: 30 }}>
                         <Navbar.Brand>
@@ -24,7 +24,7 @@ export const Header = () => {
                                     <FaShoppingCart />  Cart
                                     {
                                         cartItems.length > 0 && (
-                                            <Badge pill bg='secondary' style={{ marginLeft: "2px" }}>
+                                            <Badge pill bg='primary' style={{ marginLeft: "2px" }}>
                                                 {cartItems.reduce((a, c) => a + c.qty, 0)}
                                             </Badge>
                                         )

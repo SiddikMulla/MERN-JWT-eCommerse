@@ -103,7 +103,6 @@ const ProductScreen = () => {
                                     type='button'
                                     disabled={product.countInStock === 0}
                                     onClick={addToCartHandler}
-                                    variant='dark'
                                 >
                                     Add To Cart
                                 </Button>
