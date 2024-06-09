@@ -4,6 +4,7 @@ import { FaTrash } from 'react-icons/fa'
 import Message from '../components/Message'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart } from '../../slices/cartSlice'
+import { HiArrowCircleLeft } from "react-icons/hi";
 
 const CartScreen = () => {
     const navigate = useNavigate();
@@ -22,12 +23,16 @@ const CartScreen = () => {
 
     return (
         <>
+            <Link className='btn btn-light my-3' to='/'>
+                <HiArrowCircleLeft /> Go Back
+            </Link>
+
             <Row>
                 <Col md={8}>
                     <h1 style={{ marginBottom: "20px" }}>Shopping Cart</h1>
                     {cartItems.length === 0 ? (
-                        <Message variant="danger">
-                            Your cart is empty  <Link to="/"> Go Back</Link>
+                        <Message variant="warning">
+                            Your cart is empty   <Link to="/" className='text text-dark'>  Go Back</Link>
                         </Message>
                     ) : (
                         <ListGroup variant='flush'>
@@ -38,7 +43,7 @@ const CartScreen = () => {
                                             <Image src={item.image} alt={item.name} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`product/${item._id}`}>{item.name}</Link>
+                                            <Link to={`product/${item._id}`} className='text text-dark'>{item.name}</Link>
                                         </Col>
                                         <Col md={2}>
                                             ${item.price}
@@ -77,7 +82,7 @@ const CartScreen = () => {
                             ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Button type='button' className='btn-block' disabled={cartItems.length === 0}>
+                            <Button type='button' className='btn-block' variant='dark' disabled={cartItems.length === 0}>
                                 Proceed to Checkout
                             </Button>
                         </ListGroup.Item>
