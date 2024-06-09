@@ -69,10 +69,8 @@ const LoginScreen = () => {
                 <Button disabled={isLoading} type='submit' variant='dark' className='mt-3'>
                     Sign In
                 </Button>
-
-              
+   
             </Form>
-
             <Row className='py-3'>
                 <Col>
                     New Customer?{' '}
