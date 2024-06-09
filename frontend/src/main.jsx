@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import "./assets/styles/index.css"
-import "./assets/styles/bootstrap.custom.css"
+// import "./assets/styles/bootstrap.custom.css"
 import { Provider } from 'react-redux'
-// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import App from './App.jsx'
 import HomeScreen from './screens/HomeScreen.jsx'
 import store from './store.js'
