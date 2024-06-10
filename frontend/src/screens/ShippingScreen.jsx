@@ -1,18 +1,27 @@
 import { useState } from "react"
 import { Form, Button } from 'react-bootstrap'
 import FormContainer from "../components/FormContainer"
-
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { saveShippingAddress } from "../../slices/cartSlice"
 
 
 const ShippingScreen = () => {
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [postalCode, setPostalCode] = useState('')
-    const [country, setCountry] = useState('')
+    const cart = useSelector((state) => state.cart)
+    const { shippingAddress } = cart
+
+    const [address, setAddress] = useState(shippingAddress?.address || '')
+    const [city, setCity] = useState(shippingAddress?.city || '')
+    const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode || '')
+    const [country, setCountry] = useState(shippingAddress?.country || '')
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log("Submitted")
+        dispatch(saveShippingAddress({ address, postalCode, city, country }));
+        navigate('/payment')
     }
 
 
@@ -63,10 +72,10 @@ const ShippingScreen = () => {
                     >
                     </Form.Control>
                 </Form.Group>
-        
-            <Button type="submit" variant="dark" className="my-2">
-                Continue
-            </Button>
+
+                <Button type="submit" variant="dark" className="my-2">
+                    Continue
+                </Button>
             </Form>
         </FormContainer>
     )
