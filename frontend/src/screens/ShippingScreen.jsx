@@ -24,7 +24,12 @@ const ShippingScreen = () => {
         navigate('/payment')
     }
 
-
+    const resetHandler = () => {
+        setAddress('');
+        setCity('');
+        setPostalCode('');
+        setCountry('');
+    }
     return (
         <FormContainer>
             <h1>Shipping</h1>
@@ -75,6 +80,9 @@ const ShippingScreen = () => {
 
                 <Button type="submit" variant="dark" className="my-2">
                     Continue
+                </Button>
+                <Button type="reset" variant="danger" onClick={resetHandler} className="my-2 mx-1">
+                    Reset
                 </Button>
             </Form>
         </FormContainer>
