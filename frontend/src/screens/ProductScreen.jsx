@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import Message from '../components/Message.jsx';
 import { addToCart } from '../../slices/cartSlice';
+import { toast } from 'react-toastify';
 
 const ProductScreen = () => {
     const [product, setProduct] = useState({});
@@ -27,6 +28,7 @@ const ProductScreen = () => {
     const addToCartHandler = () => {
         dispatch(addToCart({ ...product, qty }));
         navigate('/cart');
+        toast.success("Added to cart")
     };
 
     return (

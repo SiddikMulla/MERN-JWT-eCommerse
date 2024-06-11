@@ -5,6 +5,7 @@ import Message from '../components/Message'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart } from '../../slices/cartSlice'
 import { HiArrowCircleLeft } from "react-icons/hi";
+import { toast } from 'react-toastify'
 
 const CartScreen = () => {
     const navigate = useNavigate();
@@ -19,6 +20,7 @@ const CartScreen = () => {
 
     const removeFromCartHandler = async (id) => {
         dispatch(removeFromCart(id))
+        toast.error("Removed")
     }
     const checkoutHandler = () => {
         navigate('/login?redirect=/shipping');

@@ -81,10 +81,10 @@ const ShippingScreen = () => {
                         </Form.Control>
                     </Form.Group>
 
-                    <Button type="submit" variant="dark" className="my-2">
+                    <Button type="submit" variant="success" className="my-2">
                         Continue
                     </Button>
-                    <Button type="reset" variant="danger" onClick={resetHandler} className="my-2 mx-1">
+                    <Button type="reset" variant="danger" onClick={resetHandler} className="my-2 mx-3">
                         Reset
                     </Button>
                 </Form>

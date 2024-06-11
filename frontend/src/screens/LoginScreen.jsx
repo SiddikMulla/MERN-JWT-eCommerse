@@ -8,7 +8,7 @@ import FormContainer from '../components/FormContainer';
 import { useLoginMutation } from '../../slices/userApiSlice';
 import { setCredentials } from '../../slices/authSlice';
 import { toast } from 'react-toastify';
-import CheckoutSteps from '../components/CheckoutSteps';
+// import CheckoutSteps from '../components/CheckoutSteps';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -44,7 +44,6 @@ const LoginScreen = () => {
 
     return (
         <>
-            <CheckoutSteps step1 />
             <FormContainer>
                 <h1>Sign In</h1>
 
