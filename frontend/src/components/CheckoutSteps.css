@@ -1,7 +1,7 @@
 /* CheckoutSteps.css */
 .nav-link-dark {
     color: #343a40 !important; /* Bootstrap's dark color */
-  font-weight: 430;
+  font-weight: 500;
 }
 
 .nav-link-dark.disabled {
