@@ -45,7 +45,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                     ) : (<Nav.Link className="nav-link-dark disabled">Place Order</Nav.Link>)}
                 </Nav.Item>
             </Nav>
-            <ProgressBar now={calculateProgress()} className="checkout-progress-bar mt-1" variant='success' />
+            <ProgressBar now={calculateProgress()} className="checkout-progress-bar mt-1" variant='info' />
         </div>
     );
 }
