@@ -1,0 +1,9 @@
+.shad {
+    border: 1px solid rgba(198, 198, 198, 0.89);
+    box-shadow: 1px 2px rgb(77, 77, 77);
+    border-radius: 10px;
+}
+
+.but{
+    border-radius: 20px;
+}

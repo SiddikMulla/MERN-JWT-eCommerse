@@ -7,6 +7,7 @@ import FormContainer from '../components/FormContainer';
 import { useRegisterMutation } from '../../slices/userApiSlice';
 import { setCredentials } from '../../slices/authSlice';
 import { toast } from 'react-toastify';
+import './Login.css'
 
 const RegisterScreen = () => {
     const [email, setEmail] = useState('');
@@ -50,50 +51,58 @@ const RegisterScreen = () => {
 
     return (
         <FormContainer>
-            <h1>Sign Up</h1>
 
-            <Form onSubmit={submitHandler} className='d-flex row'>
+            <Form onSubmit={submitHandler} className='d-flex row border border-dark rounded-5 p-5'>
+                <h2 className='text-center'>Sign Up</h2>
                 <Form.Group className='my-2' controlId='name'>
-                    <Form.Label>User Name</Form.Label>
+                    <Form.Label style={{ fontWeight: '500' }}>User Name</Form.Label>
                     <Form.Control
                         type='text'
                         placeholder='John Doe'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                         className='shad'
+                        required
                     ></Form.Control>
                 </Form.Group>
 
                 <Form.Group className='my-2' controlId='email'>
-                    <Form.Label>Email Address</Form.Label>
+                    <Form.Label style={{ fontWeight: '500' }}>Email Address</Form.Label>
                     <Form.Control
                         type='email'
                         placeholder='john@gmail.com'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                         className='shad'
+                        required
                     ></Form.Control>
                 </Form.Group>
 
                 <Form.Group className='my-2' controlId='password'>
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label style={{ fontWeight: '500' }}>Password</Form.Label>
                     <Form.Control
                         type='password'
                         placeholder='**********'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                         className='shad'
+                        required
                     ></Form.Control>
                 </Form.Group>
 
                 <Form.Group className='my-2' controlId='confirmPassword'>
-                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Label style={{ fontWeight: '500' }}>Confirm Password</Form.Label>
                     <Form.Control
                         type='password'
                         placeholder='**********'
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
+                         className='shad'
+                        required
                     ></Form.Control>
                 </Form.Group>
 
-                <Button disabled={isLoading} type='submit' variant='dark' className='mt-3'>
+                <Button disabled={isLoading} type='submit' variant='dark' className='mt-3 but'>
                     Register
                 </Button>
 

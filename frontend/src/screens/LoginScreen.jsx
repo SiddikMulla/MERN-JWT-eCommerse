@@ -9,10 +9,12 @@ import { useLoginMutation } from '../../slices/userApiSlice';
 import { setCredentials } from '../../slices/authSlice';
 import { toast } from 'react-toastify';
 // import CheckoutSteps from '../components/CheckoutSteps';
+import './Login.css'
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -44,34 +46,43 @@ const LoginScreen = () => {
 
     return (
         <>
-            <FormContainer>
-                <h1>Sign In</h1>
-
-                <Form onSubmit={submitHandler} className='d-flex row'>
+            <FormContainer >
+                <Form onSubmit={submitHandler} className='d-flex row border border-dark rounded-5 p-5'>
+                    <h2 className='text-center'>Sign In</h2>
                     <Form.Group className='my-2' controlId='email'>
-                        <Form.Label>Email Address</Form.Label>
+                        <Form.Label style={{ fontWeight: '500' }}>Email Address</Form.Label>
                         <Form.Control
                             type='email'
                             placeholder='abc@gmail.com'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                             className='shad'
                         ></Form.Control>
                     </Form.Group>
 
                     <Form.Group className='my-2' controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label style={{ fontWeight: '500' }}>Password</Form.Label>
                         <Form.Control
-                            type='password'
+                            type={showPassword ? 'text' : 'password'}
                             placeholder='**********'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            className='shad'
                         ></Form.Control>
                     </Form.Group>
 
-                    <Button disabled={isLoading} type='submit' variant='dark' className='mt-3'>
+                    <Form.Group className='my-2' controlId='showPassword'>
+                        <Form.Check 
+                            type='checkbox' 
+                            label='Show Password' 
+                            checked={showPassword} 
+                            onChange={(e) => setShowPassword(e.target.checked)} 
+                        />
+                    </Form.Group>
+
+                    <Button disabled={isLoading} type='submit' variant='dark' className='mt-3 but'>
                         Sign In
                     </Button>
-
                 </Form>
                 <Row className='py-3'>
                     <Col>
