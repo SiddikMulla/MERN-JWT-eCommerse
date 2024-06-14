@@ -18,10 +18,10 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
             <Nav className='justify-content-center mb-1 gap-3'> {/* Adjust the bottom margin here */}
                 <Nav.Item>
                     {step1 ? (
-                        <LinkContainer to='/login'>
-                            <Nav.Link className="nav-link-dark">Sign In</Nav.Link>
+                        <LinkContainer to='/cart'>
+                            <Nav.Link className="nav-link-dark">Cart</Nav.Link>
                         </LinkContainer>
-                    ) : (<Nav.Link className="nav-link-dark disabled">Sign In</Nav.Link>)}
+                    ) : (<Nav.Link className="nav-link-dark disabled">Cart</Nav.Link>)}
                 </Nav.Item>
                 <Nav.Item>
                     {step2 ? (
