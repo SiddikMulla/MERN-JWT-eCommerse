@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart } from '../../slices/cartSlice'
 import { HiArrowCircleLeft } from "react-icons/hi";
 import { toast } from 'react-toastify'
+import CheckoutSteps from '../components/CheckoutSteps'
 
 const CartScreen = () => {
     const navigate = useNavigate();
@@ -29,6 +30,7 @@ const CartScreen = () => {
 
     return (
         <>
+            <CheckoutSteps step1 />
             <Link className='btn btn-light my-3' to='/'>
                 <HiArrowCircleLeft /> Go Back
             </Link>

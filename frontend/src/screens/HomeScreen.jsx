@@ -13,6 +13,7 @@ const HomeScreen = () => {
                 <Spinner animation="border" className="justify-content-center" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
+
             ) : error ? (
                 <Message variant='danger'>{error?.data?.message || error.error}</Message>
             ) :
